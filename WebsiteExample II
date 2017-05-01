@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Example Website</title>
+  
+<style>
+body {
+  /*greyish color*/
+  background-color: #3d5c5c;
+}
+
+
+/*Beginning of slide CSS*/
+.slider {
+  max-width: 940px;
+  margin: 0px auto 30px auto;
+}
+
+.slide-viewer {
+  position: relative;
+  overflow: hidden;
+  height: 430px;
+}
+
+.slide-group {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: absolute;
+}
+
+.slide:first-child {
+  display: block;
+}
+
+.slide-buttons {
+  text-align: center;
+}
+
+.slide-btn {
+  border: none;
+  background: none;
+  color: #000;
+  font-size: 200%;
+  line-height: 0.5em;
+}
+
+.slide-btn.active,
+.slide-btn:hover {
+  color: #ed8e6c;
+  cursor: pointer;
+}
+
+
+/*this css help the image fix on the screen*/
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+/*end of slider CSS*/
+
+header {
+  height: 3em;
+  text-align: center;
+  margin-right: 6em;
+  margin-top: 3em;
+  margin-bottom: 4em;
+  font-family: Georgia, "Times New Roman";
+}
+
+li {
+  display: inline;
+  list-style-type: none;
+  margin-right: 10px;
+}
+
+a:link {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+article {
+  margin-right: 3em;
+  margin-left: 3em;
+  font-family: Arial, "Lucida Console";
+}
+
+footer {
+  float: right;
+  margin-top: 3em;
+  margin-right: 10em;
+  font-size: 1.1em;
+}
+</style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Example Website</h1>
+  </header>
+  
+  <!--Fix picture size-->
+  <section>
+    <div class="slider">
+      <div class="slide-viewer">
+        <div class="slide-group">
+          <div class="slide slide-1">
+            <img src="https://kbdevstorage1.blob.core.windows.net/asset-blobs/19236_en_1" alt="Stone Dragon" />
+          </div>
+          <div class="slide slide-2">
+            <img src="https://kbdevstorage1.blob.core.windows.net/asset-blobs/19461_en_1" alt="Lamps" />
+          </div>
+          <div class="slide slide-3">
+            <img src="https://kbdevstorage1.blob.core.windows.net/asset-blobs/19809_en_1" alt="Books" />
+          </div>
+        </div>
+      </div>
+      <div class="slide-buttons"></div>
+    </div>
+  </section>
+
+  <article>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquet sodales sapien vel cursus. Aenean sed ligula a orci dictum imperdiet quis vel sapien. Morbi purus sapien, pulvinar et pretium vel, ultrices vitae mi. Suspendisse sagittis vitae sem in sagittis. Aenean eu justo sit amet arcu mollis commodo sit amet eget urna. Fusce posuere, ex vel placerat fringilla, augue nisi laoreet justo, vitae dignissim nulla ante ut ex. Nunc tempus nulla non pretium fermentum. Etiam et elit vitae est scelerisque aliquet. Sed et finibus lorem. Praesent neque justo, viverra non lacus sed, vulputate convallis purus. Pellentesque nec enim lectus. Sed in pellentesque tortor. Cras non ipsum tristique, lacinia dui id, tincidunt orci. Aliquam pretium arcu a augue dapibus, ac luctus est interdum. Phasellus mattis vel ex eget sollicitudin. Pellentesque non magna eget est ullamcorper laoreet. Donec non lacus tincidunt, vulputate metus et, dignissim metus. Donec tincidunt non sem et elementum. Cras posuere ligula ut tortor semper tristique. Duis malesuada diam sed laoreet accumsan. Nulla tristique lectus at tortor convallis, id vehicula lectus tempor.</p>
+  </article>
+
+  <footer>
+    <ul>
+      <li><a href="">About</a></li>
+      <li><a href="">Address</a></li>
+      <li><a href="">Email</a></li>
+      <li><a href="">Careers</a></li>
+    </ul>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  
+  <script>
+  /*This code uses JQuery so a link to JQuery is needed in the HTML.*/
+
+$('.slider').each(function() {
+  var $this = $(this);
+  var $group = $this.find('.slide-group');
+  var $slides = $this.find('.slide');
+  var buttonArray = [];
+  var currentIndex = 0;
+  var timeout;
+
+  function move(newIndex) {
+    var animateLeft, slideLeft;
+    advance();
+    if ($group.is(':animated') || currentIndex === newIndex) {
+      return;
+    }
+    buttonArray[currentIndex].removeClass('active');
+    buttonArray[newIndex].addClass('active');
+    if (newIndex > currentIndex) {
+      slideLeft = '100%';
+      animateLeft = '-100%';
+    } else {
+      slideLeft = '-100%';
+      animateLeft = '100%';
+    }
+
+    $slides.eq(newIndex).css({
+      left: slideLeft,
+      display: 'block'
+    });
+
+    $group.animate({
+      left: animateLeft
+    }, function() {
+      $slides.eq(currentIndex).css({
+        display: 'none'
+      });
+      $slides.eq(newIndex).css({
+        left: 0
+      });
+      $group.css({
+        left: 0
+      });
+      currentIndex = newIndex;
+    });
+  }
+
+  function advance() {
+    clearTimeout(timeout);
+    timeout = setTimeout(function() {
+      if (currentIndex < ($slides.length - 1)) {
+        move(currentIndex + 1);
+      } else {
+        move(0);
+      }
+    }, 4000);
+  }
+
+  $.each($slides, function(index) {
+    var $button = $('<button type="button" class="slide-btn">&bull;</button>');
+    if (index === currentIndex) {
+      $button.addClass('active');
+    }
+    $button.on('click', function() {
+      move(index);
+    }).appendTo('.slide-buttons');
+    buttonArray.push($button);
+  });
+
+  advance();
+});
+  </script>
+</body>
+
+</html>
