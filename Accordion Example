@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Accordion Example</title>
+    
+    <style>
+      body {
+  background-color: #00a3cc;
+}
+
+.accControl {
+  background-color: #1ad1ff;
+  border-radius: 5%;
+  border-style: outset;
+  border-color: #1ad1ff;
+}
+
+.accText {
+  display:none;
+}
+
+.accordion{
+  list-style-type:none;
+  margin-left: 35px;
+}
+
+h2 {
+  margin-left: 30px;
+}
+
+p {
+  display: inline;
+}
+    </style>
+  </head
+  <body>
+    <h2>Press a button to expand text.</h2>
+    <ul class="accordion">
+      <li>
+        <button class="accControl">Tab One</button>
+        <div class="accText"><p>The text for tab one goes here.</p></div>
+      </li>
+      
+      <li>
+        <button class="accControl">Tab Two</button>
+        <div class="accText"><p>The text for tab two goes here.</p></div>
+      </li>
+      
+       <li>
+        <button class="accControl">Tab Three</button>
+         <div class="accText"><p>The text for tab three goes here.</p></div>
+      </li>
+    </ul>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    
+    <script>
+      $(".accordion").on("click", ".accControl", function(e) {
+  e.preventDefault();
+$(this).next(".accText").not(":animated").slideToggle();
+});
+    </script>
+  </body>
+</html>
