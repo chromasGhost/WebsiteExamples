@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Practice Page</title>
+  
+<style>
+body {
+  background-color: #1a1a1a;
+  margin:0;
+  padding: 0;/*Need to make sure margin and padding are 0 in body and html to make image reach the full screen size on the edges.*/
+}
+
+header {
+  height: 3em;
+  text-align: center;
+  margin-right: 6em;
+  font-family: Georgia, "Times New Roman";
+}
+
+#rainDrop {
+  background-image: url("https://kbdevstorage1.blob.core.windows.net/asset-blobs/19192_en_1");
+  background-attachment: fixed;
+  background-size: cover;
+  height: 150px;
+  width: 100%;
+  margin: 0px;
+}
+
+#desert {
+  background-image: url("https://kbdevstorage1.blob.core.windows.net/asset-blobs/19741_en_1");
+  background-attachment: fixed;
+  background-size: cover;
+  height: 150px;
+  width: 100%;
+  margin: 0;
+}
+
+#forest {
+  background-image: url("https://kbdevstorage1.blob.core.windows.net/asset-blobs/19251_en_1");
+  background-attachment: fixed;
+  background-size: cover;
+  height: 150px;
+  width: 100%;
+  margin: 0;
+}
+
+.text {
+  color: #bfbfbf;
+  text-align: right;
+  padding-top: 65px;
+  padding-right: 50px;
+  margin: 0; /*Margins at zero so that the images touch at the top and bottom.*/
+}
+
+p {
+  font-size: 2em;
+  text-align: center;
+  padding-top: 150px;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 6em;
+  padding-top: 5em;
+}
+
+a:link {
+  color: #000000;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #ffffff;
+}
+
+a:visited {
+  text-decoration: none;
+  color: #000000;
+}
+</style>
+</head>
+
+<body>
+  <header>
+    <h2>Webpage Name</h2>
+  </header>
+  <div id="rainDrop">
+    <h1 class="text"><strong>Rain Drops</strong></h1>
+  </div>
+
+  <div id="desert">
+    <h1 class="text"><strong>Desert</strong></h1>
+  </div>
+
+  <div id="forest">
+    <h1 class="text"><strong>Forest</strong></h1>
+  </div>
+
+  <article>
+    <p>Pictures of Earth.</p>
+  </article>
+
+
+  <footer>
+    <nav id="navFooter">
+      <ul>
+        <li><a href="">about</a></li>
+        <li><a href="">contacts</a></li>
+        <li><a href="">other stuff</a></li>
+      </ul>
+    </nav>
+  </footer>
+</body>
+
+</html>
