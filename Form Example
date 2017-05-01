@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Form Example</title>
+  
+<style>
+body {
+  /*slightly darker white*/
+  background-color: #f2f2f2
+}
+header {
+  margin-top: 30px;
+  margin-left: 100px;
+}
+
+h1 {
+  font-family: "Times New Roman", serif;
+}
+
+form {
+  margin-top: 20px;
+  margin-left: 120px;
+}
+
+input {
+  box-shadow: 3px 3px 15px #777777;
+}
+
+input:invalid {
+  background-color: red;
+}
+
+#submitButton {
+  margin-left: 50px;
+}
+
+textarea {
+  box-shadow: 3px 3px 15px #777777;
+}
+</style>
+</head>
+
+<body>
+  <header>
+    <h1>Form Example</h1>
+  </header>
+  <!--In the form element the action points to where the information is sent to on your server and the method is post because in it more secure then get. -->
+  <form action="" method="post">
+    <p>First Name<br/>
+      <input type="text" name="firstName" />
+    </p>
+    <p> Last Name<br/>
+      <input type="text" name="lastName" />
+    </p>
+
+    <p>Email<br/>
+      <input type="email" name="email" id="email"/>
+    </p>
+    <!--pattern sets what the password can use as characters. It should at least one number one lower case letter one upper case letter and be eight characters long or more.-->
+    <p>Password<br/>
+      <input type="password" name="password" pattern="(?=.*\d) (?=.*[a-z]) (?=.*[A-Z]) .{8,}"/>
+    </p>
+
+    <p>Comments<br/>
+      <textarea name="comments">
+        </textarea>
+      
+      <br/><br/>
+      <input id ="submitButton" type="submit" value="Submit"/>
+  </form>
+  
+  <script>
+  /*variable and function change email validation message.*/
+
+var mail = document.getElementById("email");
+
+mail.addEventListener("keyup", function (event) {
+  if (mail.validity.typeMismatch) {
+    mail.setCustomValidity("Please enter a valid email address.");
+  }
+  else {
+    mail.setCustomValidity("");
+  }
+})
+  </script>
+</body>
+</html>
