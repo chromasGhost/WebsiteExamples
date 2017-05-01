@@ -1,4 +1,4 @@
 # WebsiteExamples
-Example websites
+Example Websites
 
-A few HTML/CSS exmaples.  They may also included some javescript and/or JQuery.
+A few HTML/CSS examples.  They may also included some javescript and/or JQuery.
