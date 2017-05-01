@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tab Panel Example</title>
+    
+     <style>
+     /*html height and width is need to the background fills the whole screen.*/
+html{
+  height: 100%;
+  width: 100%;
+}
+body {
+    background-color: #0047b3;
+}
+.tabControl {
+  border-style: inset;
+  background-color: #1a75ff;
+  border-radius: 5px;
+  border-color: #005ce6;
+}
+
+.tabPanel {
+  display: none;
+  font-family: georgia;
+  background-color:  #1a75ff;
+  height: 100px;
+  width: 400px;
+  border-radius: 10px;
+}
+
+.tabPanel.active{
+  display: block;
+}
+
+.tabList {
+  list-style-type: none;
+}
+
+li{
+  display: inline;
+}
+
+a {
+  color: #000000;
+  text-decoration: none;
+  font-family: georgia;
+}
+
+p {
+  margin-left: 10px;
+}
+  </style>
+  </head
+  <body>
+    <ul class="tabList">
+      <li class="active"> <a class="tabControl" href="#tab1">One</a></li>
+  
+      <li><a class="tabControl" href="#tab2">Two</a></li>
+      
+      <li><a class="tabControl" href="#tab3">Three</a></li>
+    </ul>
+    
+    <div class="tabPanel active" id="tab1"><p>When you press one the text for one appears here.</p></div>
+    
+    <div class="tabPanel" id="tab2"><p>The text for two goes here and is shown when two is pressed.</p></div>
+    
+    <div class="tabPanel" id="tab3"><p>More text for three goes here.<p></div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    
+    <script>
+    $(".tabList").each(function() {
+  var $this = $(this);
+  var $tab = $this.find("li.active");
+  var $link = $tab.find("a");
+  var $panel = $($link.attr("href"));
+  
+  $this.on("click", ".tabControl", function(e) {
+           e.preventDefault();
+           var $link = $(this);
+           var id = this.hash;
+           
+  if (id && !$link.is(".active")) {
+    $panel.removeClass("active");
+    $tab.removeClass("active");
+    
+    $panel = $(id).addClass("active");
+    $tab = $link.parent().addClass("active");
+    }
+           
+  });
+});
+    </script>
+  </body>
+</html>
