@@ -70,7 +70,6 @@ img {
 header {
   height: 3em;
   text-align: center;
-  margin-right: 6em;
   margin-top: 3em;
   margin-bottom: 4em;
   font-family: Georgia, "Times New Roman";
